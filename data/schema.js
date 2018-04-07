@@ -2,10 +2,9 @@ const axios = require('axios');
 const { GraphQLObjectType, GraphQLSchema, GraphQLString, GraphQLNonNull, GraphQLInt, GraphQLList } = require('graphql');
 const querystring = require('querystring');
 
-// This calls for an environment variable that contains your Petfinder key. You can either replace this with a string
-// that contains your petfinder key or set it as an environment variable on the machine you are running the server on.
-//var petfinderKey = process.env.petfinder_key ;
-var apiKey = '5abaa60bb4977';
+// This calls for an environment variable that contains your Open311 api key. You can either replace this with a string
+// that contains your key or set it as an environment variable on the machine you are running the server on.
+var apiKey = process.env.open311_key
 var baseUrl = 'https://bloomington.in.gov/crm-test/open311/v2/';
 
 var getServiceListUrl = baseUrl + 'services.json';
@@ -13,22 +12,10 @@ var getServiceRequestsUrl = baseUrl + 'requests.json';
 var getServiceDefinitionUrl = baseUrl + 'services/';
 var postServiceRequestUrl = baseUrl + 'requests.json';
 
-//var randomPetUrl = baseUrl + 'pet.getRandom';
-//var breedListUrl = baseUrl + 'breed.list';
-//var petUrl = baseUrl + 'pet.get';
-//var petFindUrl = baseUrl + 'pet.find'
-// var shelterUrl = baseUrl + 'shelter.get';
-// var shelterFindUrl = baseUrl + 'shelter.find';
-// var shelterGetPetsUrl = baseUrl + 'shelter.getPets';
-// var shelterListByBreedUrl = baseUrl + 'shelter.listByBreed';
-
 const ServiceType = require('./types/service_type');
 const RequestType = require('./types/request_type');
 const AttributeType = require('./types/attribute_type');
 const PostServiceType = require('./types/post_service_type');
-// const PetType = require('./types/pet_type');
-// const BreedType = require('./types/breed_type');
-// const ShelterType = require('./types/shelter_type');
 
 module.exports = new GraphQLSchema({
   query: new GraphQLObjectType({
