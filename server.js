@@ -1,5 +1,3 @@
-import { appendFileSync } from 'fs';
-
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const cors = require('cors');
