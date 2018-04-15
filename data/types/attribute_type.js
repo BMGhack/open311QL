@@ -27,6 +27,14 @@ module.exports = new GraphQLObjectType({
      type: GraphQLString,
      resolve: json => { return json.datatype_description }
     },
+    order: {
+      type: GraphQLInt,
+      resolve: json => { return json.order }
+    },
+    description: {
+      type: GraphQLString,
+      resolve: json => { return json.description }
+    },
     values: {
      type: new GraphQLList(ValueType),
      resolve: json => { return json.values }
