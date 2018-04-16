@@ -73,11 +73,91 @@ module.exports = new GraphQLSchema({
             type: new GraphQLNonNull(GraphQLInt),
             description: 'Required: The code of the service that you would like to create. Find using query.serivceList'
           },
-          //todo: attributes is pretty messy, try to figure out
-          // attributes: {
-          //   type: GraphQLString,
-          //   description: 'This takes the form of attribute[code]=value where multiple code/value pairs can be specified as well as multiple values for the same code in the case of a multivaluelist datatype (attribute[code1][]=value1&attribute[code1][]=value2&attribute[code1][]=value3)'
-          // },
+          // todo: attributes is pretty messy, try to figure out
+          violation: {
+            type: GraphQLString,
+            description: 'This takes the form of attribute[code]=value where multiple code/value pairs can be specified as well as multiple values for the same code in the case of a multivaluelist datatype (attribute[code1][]=value1&attribute[code1][]=value2&attribute[code1][]=value3)'
+          },
+          propertyowner: {
+            type: GraphQLString,
+            description: ''
+          },
+          propertytype: {
+            type: GraphQLString,
+            description: ''
+          },
+          plagued: {
+            type: GraphQLString,
+            description: ''
+          },
+          same: {
+            type: GraphQLString,
+            description: ''
+          },
+          contact: {
+            type: GraphQLString,
+            description: ''
+          },
+          violations: {
+            type:GraphQLString,
+            description: ''
+          },
+          subcategory: {
+            type:GraphQLString,
+            description: ''
+          },
+          reportee: {
+            type:GraphQLString,
+            description: ''
+          },
+          other: {
+            type:GraphQLString,
+            description: ''
+          },
+          timeofday: {
+            type:GraphQLString,
+            description: ''
+          },
+          issue: {
+            type:GraphQLString,
+            description: ''
+          },
+          complaintType: {
+            type:GraphQLString,
+            description: ''
+          },
+          specificrequest: {
+            type:GraphQLString,
+            description: ''
+          },
+          problem: {
+            type:GraphQLString,
+            description: ''
+          },
+          type: {
+            type:GraphQLString,
+            description: ''
+          },
+          involve: {
+            type:GraphQLString,
+            description: ''
+          },
+          problem_type: {
+            type:GraphQLString,
+            description: ''
+          },
+          workorder: {
+            type:GraphQLString,
+            description: ''
+          },
+          applicationName: {
+            type:GraphQLString,
+            description: ''
+          },
+          applicationUrl: {
+            type:GraphQLString,
+            description: ''
+          },
           lat: {
             type: GraphQLString,
             description: 'lat & long both need to be sent even though they are sent as two separate parameters. lat & long are required if no address_string or address_id is provided.'
@@ -132,7 +212,27 @@ module.exports = new GraphQLSchema({
           data: querystring.stringify({
             api_key: apiKey,
             service_code: args.service_code,
-            //attributes: args.attributes,
+            'attribute[violation]': args.violation,
+            'attribute[propertyowner]': args.propertyowner,
+            'attribute[propertytype]': args.propertytype,
+            'attribute[plagued]': args.plagued,
+            'attribute[same]': args.same,
+            'attributes[contact]': args.contact,
+            'attribute[violations]': args.violations,
+            'attribute[subcategory]': args.subcategory,
+            'attribute[reportee]': args.reportee,
+            'attribute[other]': args.other,
+            'attribute[timeofday]': args.timeofday,
+            'attribute[issue]': args.issue,
+            'attribute[complaintType]': args.complaintType,
+            'attribute[specific request]': args.specificrequest,
+            'attribute[proplem]': args.problem,
+            'attribute[type]': args.type,
+            'attribute[involve]': args.involve,
+            'attribute[problem_type]': args.problem_type,
+            'attribute[workorder]': args.workorder,
+            'attribue[applicationName]': args.applicationName,
+            'attribute[applicationUrl]': args.applicationUrl,
             lat: args.lat,
             long: args.long,
             address_string: args.address_string,
@@ -144,9 +244,8 @@ module.exports = new GraphQLSchema({
             phone: args.phone,
             description: args.description,
             media_url: args.media_url
-          })
+          }) 
         }).then(response => {
-          //console.log(response.data[0]);
           return response.data[0]
         })
       }
